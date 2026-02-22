@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poland-Saint Lucia Film Partnership Forum 2026</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Styles & Design Tokens -->
+    <style>
+        /* Chosen Palette: Caribbean Cinema Meets European Classic
+           - Backgrounds: Warm Sand (#FDFBF7), Soft Paper (#F3F4F6), Crisp White (#FFFFFF)
+           - Primary Text: Deep Charcoal (#1F2937)
+           - Accents: Polish Red (Subtle - #B91C1C), Saint Lucian Blue (Subtle - #0284C7)
+           - Typography: Playfair Display (Headings - Cinematic/Classic), Lato (Body - Clean/Modern)
+        */
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #FDFBF7;
+            color: #1F2937;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .cinematic-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* CRITICAL: Chart Container Styling for responsiveness and bounds */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Interactive Elements */
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.1), 0 4px 8px -4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Custom Scrollbar for Agenda to keep UI clean */
+        .agenda-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .agenda-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+            border-radius: 4px;
+        }
+        .agenda-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        .agenda-scroll::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-red-100 selection:text-red-900">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-24 items-center">
+                <div class="flex items-center space-x-4">
+                    <!-- Project Logo Integration - Updated to EXACT filename -->
+                    <img src="logo_forum_op.jpg" alt="Forum Logo" class="h-16 sm:h-20 w-auto object-contain mix-blend-multiply drop-shadow-sm">
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-semibold text-gray-600">
+                    <a href="#alliance" class="hover:text-red-700 transition">The Alliance</a>
+                    <a href="#delegation" class="hover:text-red-700 transition">Delegation</a>
+                    <a href="#agenda" class="hover:text-red-700 transition">Agenda</a>
+                    <a href="#screening" class="hover:text-red-700 transition">Special Screening</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600 focus:outline-none hover:text-red-700 transition">
+                    <span class="text-3xl">≡</span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 p-4 space-y-4 shadow-lg absolute w-full left-0">
+            <a href="#alliance" class="block text-gray-700 hover:text-red-700 font-medium">The Alliance</a>
+            <a href="#delegation" class="block text-gray-700 hover:text-red-700 font-medium">Delegation</a>
+            <a href="#agenda" class="block text-gray-700 hover:text-red-700 font-medium">Agenda</a>
+            <a href="#screening" class="block text-gray-700 hover:text-red-700 font-medium">Special Screening</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative bg-white pt-24 pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden border-b border-gray-100">
+        <!-- Abstract Background Ornaments -->
+        <div class="absolute top-0 right-0 -mr-32 -mt-32 w-[500px] h-[500px] bg-red-50 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 -ml-32 -mb-32 w-[500px] h-[500px] bg-sky-50 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+        
+        <div class="relative max-w-5xl mx-auto text-center fade-in" style="animation-delay: 0.1s;">
+            <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-gray-200 bg-white text-xs font-bold text-gray-600 mb-8 shadow-sm tracking-widest uppercase">
+                <span class="w-2 h-2 rounded-full bg-red-600 mr-2 animate-pulse"></span>
+                Official Press & Partner Hub
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight cinematic-font">
+                Polish Cinematic Excellence <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-red-900 italic font-medium">Meets Caribbean Storytelling</span>
+            </h1>
+            
+            <p class="mt-6 max-w-2xl mx-auto text-xl md:text-2xl text-gray-600 font-light leading-relaxed">
+                A landmark creative exchange built on <strong class="font-semibold text-gray-900">co-empowerment</strong> and the merging of unique storytelling traditions.
+            </p>
+            
+            <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4 text-sm font-bold tracking-wide">
+                <div class="flex items-center justify-center space-x-3 text-gray-700 bg-stone-50 px-8 py-4 rounded-xl border border-stone-200 shadow-sm">
+                    <span class="text-xl">📅</span>
+                    <span>MARCH 23 – 30, 2026</span>
+                </div>
+                <div class="flex items-center justify-center space-x-3 text-gray-700 bg-stone-50 px-8 py-4 rounded-xl border border-stone-200 shadow-sm">
+                    <span class="text-xl">📍</span>
+                    <span>CASTRIES, SAINT LUCIA</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 2: The Alliance & Context -->
+    <section id="alliance" class="py-24 bg-stone-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-16 fade-in" style="animation-delay: 0.2s;">
+                <h2 class="text-4xl font-bold text-gray-900 cinematic-font mb-4">A Global Alliance of Equals</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Explore the historical context and data driving this unprecedented collaboration between Poland and Saint Lucia.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Text Content (7 Cols) -->
+                <div class="lg:col-span-7 space-y-8 fade-in" style="animation-delay: 0.3s;">
+                    <div class="prose prose-lg text-gray-600 max-w-none">
+                        <p class="text-xl font-medium text-gray-800 leading-relaxed border-l-4 border-red-700 pl-6">
+                            Rooted in the legendary late-20th-century foundations built by masters like Kieślowski, Polański, and Andrzej Żuławski—including landmark victories like Zbigniew Rybczyński's 1983 Oscar for the animated short "Tango"—Polish cinema is experiencing unprecedented global traction today.
+                        </p>
+                        
+                        <p>
+                            In 2024-2025 alone, Polish documentaries featured at over 200 festivals winning 94 awards. Highlights include the International Emmy-winning <em>Pianoforte</em>, the critically acclaimed <em>In the Rearview</em>, and Oscar-contending European co-productions like <em>The Girl with the Needle</em> and Agnieszka Holland's <em>Franz</em>.
+                        </p>
+                        
+                        <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm mt-8">
+                            <h4 class="text-gray-900 font-bold mb-2 flex items-center"><span class="mr-2">🤝</span> The Strategic Goal</h4>
+                            <p class="text-sm m-0">
+                                To merge this blueprint for bold storytelling with the rich, untapped narratives of the Caribbean, fostering mutual co-empowerment and co-creation between creative equals.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visualization (5 Cols) -->
+                <div class="lg:col-span-5 fade-in" style="animation-delay: 0.4s;">
+                    <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100 relative">
+                        <!-- Decorative top accent -->
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-700 to-sky-600 rounded-t-2xl"></div>
+                        
+                        <div class="mb-6 text-center">
+                            <h3 class="text-xl font-bold text-gray-900 cinematic-font">The Polish Cinematic Bloom</h3>
+                            <p class="text-sm text-gray-500 mt-1">Global Documentary Performance (2024)</p>
+                        </div>
+                        
+                        <!-- Chart Container (Strict styling applied via CSS) -->
+                        <div class="chart-container">
+                            <canvas id="cinemaStatsChart"></canvas>
+                        </div>
+                        
+                        <div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center text-xs text-gray-500 font-medium uppercase tracking-wider">
+                            <span>Data Source: Polish Film Institute</span>
+                            <span class="flex items-center"><span class="text-lg mr-1">🏆</span> +1 Intl. Emmy</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: The Delegation -->
+    <section id="delegation" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 cinematic-font mb-4">Who's Who: The Delegation</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Meet the collaborative artists and industry leaders dedicated to co-authoring a new creative narrative alongside Saint Lucian professionals.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="bg-stone-50 rounded-2xl p-8 card-hover border border-stone-100 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl transform translate-x-4 -translate-y-4 group-hover:scale-110 transition-transform">🎬</div>
+                    <div class="h-16 w-16 bg-white border border-stone-200 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-sm">🎬</div>
+                    <h3 class="text-2xl font-bold text-gray-900 cinematic-font mb-1">Xawery Żuławski</h3>
+                    
+                    <!-- Repaired Styling: Text removed as requested -->
+                    <div class="text-sm font-bold uppercase tracking-wider mb-4 leading-snug">
+                        <span class="text-red-800">Director</span>
+                    </div>
+
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        An award-winning visionary with 40+ international recognitions. Carrying forward the bold cinematic legacy of his father, Andrzej Żuławski, Xawery engages in a mutual exchange of socially conscious storytelling.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-stone-50 rounded-2xl p-8 card-hover border border-stone-100 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl transform translate-x-4 -translate-y-4 group-hover:scale-110 transition-transform">🎥</div>
+                    <div class="h-16 w-16 bg-white border border-stone-200 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-sm">🎥</div>
+                    <h3 class="text-2xl font-bold text-gray-900 cinematic-font mb-1">Paweł Tarasiewicz</h3>
+                    <p class="text-sm text-gray-500 font-bold uppercase tracking-wider mb-4">Director & Producer</p>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        A key figure in the Amondo Films collective. Paweł’s expertise in independent cinema makes him a vital asset for horizontal co-production drafting and technical idea exchange.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-stone-50 rounded-2xl p-8 card-hover border border-stone-100 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl transform translate-x-4 -translate-y-4 group-hover:scale-110 transition-transform">✒️</div>
+                    <div class="h-16 w-16 bg-white border border-stone-200 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-sm">✒️</div>
+                    <h3 class="text-2xl font-bold text-gray-900 cinematic-font mb-1">Joanna Łopat</h3>
+                    <p class="text-sm text-gray-500 font-bold uppercase tracking-wider mb-4">Journalist & Filmmaker</p>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        A European Press Prize nominee specializing in migration and human rights. Her work focuses on giving a voice to the unheard, perfectly aligning with the Forum’s mission of mutual empowerment.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-stone-50 rounded-2xl p-8 card-hover border border-stone-100 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl transform translate-x-4 -translate-y-4 group-hover:scale-110 transition-transform">🌍</div>
+                    <div class="h-16 w-16 bg-white border border-stone-200 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-sm">🌍</div>
+                    <h3 class="text-2xl font-bold text-gray-900 cinematic-font mb-1">Lude Reno</h3>
+                    <p class="text-sm text-sky-600 font-bold uppercase tracking-wider mb-4">PL-SLU Coordinator</p>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Award-winning filmmaker, educator, and founder of the Po-Nad-To Foundation. Lude serves as the strategic bridge ensuring the Forum’s impact resonates deeply across both cultures.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Interactive Agenda -->
+    <section id="agenda" class="py-24 bg-stone-100 border-y border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <p class="text-red-700 font-bold tracking-widest uppercase text-sm mb-2">The Program</p>
+                <h2 class="text-4xl font-bold text-gray-900 cinematic-font">Forum Core Action Days</h2>
+                <p class="mt-4 text-gray-600">Select a day below to explore the schedule for creative sessions, press events, and professional networking.</p>
+            </div>
+
+            <!-- Interactive Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
+                <button onclick="switchTab('day3')" id="tab-day3" class="px-6 py-3 rounded-xl text-sm font-bold transition-all duration-200 bg-white text-gray-600 border border-gray-200 hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">Day 3: March 25</button>
+                <button onclick="switchTab('day4')" id="tab-day4" class="px-6 py-3 rounded-xl text-sm font-bold transition-all duration-200 bg-white text-gray-600 border border-gray-200 hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">Day 4: March 26</button>
+                <button onclick="switchTab('day5')" id="tab-day5" class="px-6 py-3 rounded-xl text-sm font-bold transition-all duration-200 bg-white text-gray-600 border border-gray-200 hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">Day 5: March 27</button>
+            </div>
+
+            <!-- Tab Content Display Area -->
+            <div id="agenda-content" class="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-10 min-h-[450px]">
+                <!-- Content injected via Vanilla JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Screening Highlight -->
+    <section id="screening" class="py-20 bg-gray-900 text-white relative overflow-hidden">
+        <!-- Abstract dark background pattern -->
+        <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#4b5563 1px, transparent 1px); background-size: 20px 20px;"></div>
+        
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
+            <div class="flex-1 text-center md:text-left">
+                <div class="inline-flex items-center bg-red-800 text-red-50 text-xs font-bold px-3 py-1 rounded-full mb-6 uppercase tracking-wider border border-red-700">
+                    <span class="mr-2">⭐</span> Special Cultural Event
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 cinematic-font">BOGOWIE <span class="text-2xl text-gray-400 font-sans italic font-light">(Gods)</span></h2>
+                <p class="text-gray-300 text-lg mb-8 leading-relaxed max-w-2xl">
+                    Directed by Łukasz Palkowski, this high-octane biopic tells the gripping true story of Zbigniew Religa, the surgeon who performed Poland's first successful heart transplant. The film perfectly illustrates the technical excellence and emotional depth that has made Polish cinema an international phenomenon.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center md:items-start justify-center md:justify-start gap-6 text-sm font-medium">
+                    <div class="flex items-center bg-white px-4 py-2 rounded-lg border border-gray-200 shadow-sm">
+                        <img src="Carribean Cinema .png" alt="Caribbean Cinemas" class="h-8 w-auto mr-3 object-contain">
+                        <span class="text-gray-900 font-bold tracking-wide">Castries</span>
+                    </div>
+                    <div class="flex items-center bg-gray-800 px-4 py-2 rounded-lg border border-gray-700">
+                        <span class="text-xl mr-3">🕒</span> 
+                        <span class="text-gray-200">Thursday, March 26 @ 18:00</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex-1 flex justify-center mt-10 md:mt-0">
+                <!-- Abstract "Screen" Visual using HTML/CSS Geometry -->
+                <div class="relative w-72 h-48 md:w-96 md:h-64 bg-black border-8 border-gray-800 rounded-xl flex items-center justify-center shadow-2xl transform md:rotate-2 hover:rotate-0 transition-all duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-br from-gray-800 to-black opacity-50 rounded"></div>
+                    <div class="text-center z-10">
+                        <span class="text-6xl block mb-2">🎞️</span>
+                        <span class="text-xs font-bold tracking-widest text-gray-500 uppercase">Feature Presentation</span>
+                    </div>
+                    <!-- Play button decoration -->
+                    <div class="absolute bottom-4 right-4 w-8 h-8 rounded-full bg-red-700 flex items-center justify-center">
+                        <div class="w-0 h-0 border-t-4 border-t-transparent border-l-6 border-l-white border-b-4 border-b-transparent ml-1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Partners -->
+    <footer id="partners" class="bg-stone-50 border-t border-gray-200 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Strategic Alliance Entities (Hierarchical Layout) -->
+            <div class="text-center border-b border-gray-200 pb-16 mb-12">
+                <h4 class="font-bold text-gray-900 cinematic-font text-3xl mb-12">The Strategic Alliance</h4>
+                
+                <div class="flex flex-col items-center space-y-10">
+                    <!-- Main Logo -->
+                    <div class="w-full flex justify-center mb-4">
+                        <img src="logo_forum_op.jpg" alt="Forum Logo" class="h-32 sm:h-44 w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform duration-300 mix-blend-multiply" title="Poland-Saint Lucia Film Partnership Forum">
+                    </div>
+
+                    <div class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Organisers -->
+                        <div class="flex flex-col items-center">
+                            <p class="text-xs text-gray-500 font-bold uppercase tracking-widest mb-3">Organiser</p>
+                            <div class="bg-white px-6 py-6 rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center w-full h-full">
+                                <img src="avfa_logo.png" alt="AVFA" class="max-h-20 w-auto object-contain mix-blend-multiply hover:scale-105 transition-transform duration-300" title="AVFA">
+                            </div>
+                        </div>
+
+                        <!-- Financial Partners -->
+                        <div class="flex flex-col items-center">
+                            <p class="text-xs text-gray-500 font-bold uppercase tracking-widest mb-3">Financial Partners</p>
+                            <div class="bg-white px-6 py-6 rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center gap-6 sm:gap-10 w-full h-full">
+                                <img src="IAM LOGO.jpg" alt="Instytut Adama Mickiewicza" class="max-h-16 sm:max-h-20 w-auto object-contain mix-blend-multiply hover:scale-105 transition-transform duration-300" title="Instytut Adama Mickiewicza">
+                                <img src="05_znak_uproszczony_kolor_biale_tlo.png" alt="Ministerstwo Kultury" class="max-h-14 sm:max-h-16 w-auto object-contain mix-blend-multiply hover:scale-105 transition-transform duration-300" title="Ministerstwo Kultury i Dziedzictwa Narodowego">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Partners -->
+                    <div class="w-full max-w-5xl flex flex-col items-center pt-2">
+                        <p class="text-xs text-gray-500 font-bold uppercase tracking-widest mb-3">Partners</p>
+                        <div class="bg-white px-6 py-8 rounded-2xl shadow-sm border border-gray-200 flex flex-wrap items-center justify-center gap-8 sm:gap-16 w-full">
+                            <img src="PNT LOGO Dark Green Orange Blue.png" alt="Po-Nad-To" class="max-h-16 w-auto object-contain mix-blend-multiply hover:scale-105 transition-transform duration-300" title="Po-Nad-To Foundation">
+                            <img src="Malfinis Logo.jpg" alt="Malfinis" class="max-h-16 w-auto object-contain mix-blend-multiply hover:scale-105 transition-transform duration-300" title="Malfinis Film & Animation">
+                            <img src="Carribean Cinema .png" alt="Caribbean Cinemas" class="max-h-12 sm:max-h-14 w-auto object-contain mix-blend-multiply hover:scale-105 transition-transform duration-300" title="Caribbean Cinemas">
+                            <img src="watchout-logo-color.jpg" alt="Watchout Studio" class="max-h-16 w-auto object-contain mix-blend-multiply hover:scale-105 transition-transform duration-300" title="Watchout Studio">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contacts and CTA -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                
+                <!-- Media Contacts -->
+                <div class="text-center md:text-left">
+                    <h4 class="font-bold text-gray-900 cinematic-font text-xl mb-6">Media Contacts</h4>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex items-center justify-center md:justify-start">
+                            <span class="mr-2">👤</span> <strong>Darnel Kendal John</strong> <span class="text-gray-400 ml-1">(AVFA President)</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start">
+                            <span class="mr-2">🎓</span> <strong>Tracy George / Wayne Benti</strong> <span class="text-gray-400 ml-1">(SALCC)</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start">
+                            <span class="mr-2">🌍</span> <strong>Lude Reno</strong> <span class="text-gray-400 ml-1">(Po-Nad-To Foundation)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Call to Action (Duplicate completely removed!) -->
+                <div class="text-center md:text-right">
+                    <h4 class="font-bold text-gray-900 cinematic-font text-xl mb-6">Join the Co-Creation</h4>
+                    <p class="text-sm text-gray-600 mb-4">Are you a student or professional ready to engage on the international stage?</p>
+                    <a href="mailto:avfastlucia@gmail.com" class="inline-block px-6 py-3 bg-red-700 text-white text-sm font-bold rounded-xl shadow-md hover:bg-red-800 transition-colors">
+                        Apply / Contact Us
+                    </a>
+                </div>
+
+            </div>
+            
+            <!-- Mandatory Grant Disclaimer -->
+            <div class="border-t border-gray-200 pt-8 text-center mt-12">
+                <div class="inline-block bg-white border border-gray-200 rounded-lg px-6 py-4 shadow-sm">
+                    <p class="text-xs text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                        The project is co-financed by the <strong>Minister of Culture and National Heritage (MKiDN)</strong> as part of the <strong>NetWorks</strong> program of the <strong>Adam Mickiewicz Institute (IAM)</strong>.
+                    </p>
+                </div>
+                <p class="mt-6 text-xs text-gray-400">© 2026 Poland-Saint Lucia Film Partnership Forum. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Data Store: Contains the textual data for the interactive agenda and the chart
+        const appData = {
+            agenda: {
+                day3: {
+                    title: "SALCC Student Workshop",
+                    theme: "Co-Creation & Future Voices",
+                    date: "Wednesday, March 25",
+                    events: [
+                        { time: "09:00", title: "Welcome & Intro: The NetWorks Mission", info: "Tracy George / Joanna Łopat" },
+                        { time: "09:30", title: "Creative Dialogue: Film as a Global Statement", info: "Xawery Żuławski", icon: "🎬" },
+                        { time: "11:15", title: "Technical Breakouts & Idea Exchange", info: "Cinematography & Storyboarding with Paweł Tarasiewicz", icon: "🎥" },
+                        { time: "13:00", title: "Networking Lunch", info: "Open exchange between students and professionals." },
+                        { time: "14:00", title: "Media & Press Engagement", info: "Student interview sessions (Org: Wayne Benti)" },
+                        { time: "15:30", title: "Portfolio Review", info: "Mutual feedback and project discussion." },
+                        { time: "17:00", title: "Closing: Setting goals for the 'Common Project'", info: "Lude Reno", icon: "🤝" }
+                    ]
+                },
+                day4: {
+                    title: "Professional Screening & Media Day",
+                    theme: "The Alliance Launch",
+                    date: "Thursday, March 26",
+                    events: [
+                        { time: "10:00", title: "Professional Meeting #1", info: "Technical requirements for equal co-productions. (Location: AVFA Hub)" },
+                        { time: "14:00", title: "OFFICIAL PRESS CONFERENCE", info: "Hosted by AVFA/SALCC, featuring Xawery Żuławski. (Location: Cinema Venue)", highlight: true, icon: "🎤" },
+                        { time: "18:00", title: "Polish Film Screening & Q&A", info: "Screening of BOGOWIE (Gods). 'Dialogue over Craft' panel discussion. (Location: Cinema)", highlight: true, icon: "🎞️" }
+                    ]
+                },
+                day5: {
+                    title: "Working Conference & Co-Production",
+                    theme: "Building the Future Roadmap",
+                    date: "Friday, March 27",
+                    events: [
+                        { time: "10:00", title: "Working Conference", info: "Matchmaking Polish & SLU Producers." },
+                        { time: "11:30", title: "Collaborative Session", info: "Co-Production Process Draft (Legal/Logistical Framework)." },
+                        { time: "13:00", title: "Business Lunch", info: "Institutional networking." },
+                        { time: "14:00", title: "The 'Common Project' Draft", info: "A specific project concept co-authored by both sides.", icon: "📝" },
+                        { time: "16:30", title: "Roadmap 2026/27", info: "Action items for mutual post-Forum development." }
+                    ]
+                }
+            },
+            chartData: {
+                labels: ['Intl. Festival Screenings', 'Awards Secured'],
+                // Data based on 2024 Polish Documentary performance mentioned in PR Doc
+                data: [280, 94] 
+            }
+        };
+
+        // DOM Elements
+        const agendaContainer = document.getElementById('agenda-content');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Interaction: Mobile Navigation Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Interaction: Dynamic Agenda Tab Switching
+        function switchTab(dayKey) {
+            // 1. Update Tab Button Styles (Active vs Inactive)
+            ['day3', 'day4', 'day5'].forEach(key => {
+                const btn = document.getElementById(`tab-${key}`);
+                if (key === dayKey) {
+                    // Active State
+                    btn.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
+                    btn.classList.add('bg-gray-900', 'text-white', 'border-gray-900', 'shadow-md');
+                } else {
+                    // Inactive State
+                    btn.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+                    btn.classList.remove('bg-gray-900', 'text-white', 'border-gray-900', 'shadow-md');
+                }
+            });
+
+            // 2. Fetch Data for selected day
+            const dayData = appData.agenda[dayKey];
+            
+            // 3. Generate HTML for the event list
+            const eventsHtml = dayData.events.map(event => `
+                <div class="flex flex-col md:flex-row gap-4 py-5 border-b border-gray-100 last:border-0 hover:bg-stone-50 transition-colors rounded-lg px-2 ${event.highlight ? 'bg-red-50/50 border-l-4 border-l-red-700 rounded-l-none' : ''}">
+                    <div class="md:w-28 flex-shrink-0 pt-1">
+                        <span class="font-bold text-red-700 bg-red-50 px-2 py-1 rounded text-sm">${event.time}</span>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="font-bold text-gray-900 text-lg flex items-center">
+                            ${event.title} 
+                            ${event.icon ? `<span class="ml-2 text-xl">${event.icon}</span>` : ''}
+                        </h4>
+                        <p class="text-gray-600 mt-1.5 leading-relaxed text-sm">${event.info}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            // 4. Inject into container with a fade-in animation class
+            agendaContainer.innerHTML = `
+                <div class="fade-in">
+                    <div class="mb-8 pb-6 border-b border-gray-200 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                        <div>
+                            <h3 class="text-3xl font-bold text-gray-900 cinematic-font">${dayData.title}</h3>
+                            <p class="text-sky-700 font-bold uppercase tracking-wider text-sm mt-2">${dayData.theme}</p>
+                        </div>
+                        <div class="text-gray-500 font-medium bg-gray-100 px-3 py-1 rounded text-sm self-start md:self-auto">
+                            ${dayData.date}
+                        </div>
+                    </div>
+                    <div class="space-y-1 agenda-scroll max-h-[450px] overflow-y-auto pr-4">
+                        ${eventsHtml}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize Application Logic on Load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial Agenda tab (Defaulting to the main Press Day)
+            switchTab('day4'); 
+
+            // Initialize Chart.js Visualization for the Context section
+            const ctx = document.getElementById('cinemaStatsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: appData.chartData.labels,
+                    datasets: [{
+                        label: '2024 Polish Documentary Performance',
+                        data: appData.chartData.data,
+                        backgroundColor: [
+                            'rgba(185, 28, 28, 0.8)', // Polish Red tone
+                            'rgba(234, 179, 8, 0.8)'  // Trophy Gold tone
+                        ],
+                        borderColor: [
+                            'rgb(153, 27, 27)',
+                            'rgb(202, 138, 4)'
+                        ],
+                        borderWidth: 1,
+                        borderRadius: 6,
+                        barPercentage: 0.6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                            titleFont: { family: 'Lato', size: 14 },
+                            bodyFont: { family: 'Lato', size: 14, weight: 'bold' },
+                            padding: 12,
+                            callbacks: {
+                                label: function(context) {
+                                    return ' ' + context.parsed.y + ' Total (2024)';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#f3f4f6', drawBorder: false },
+                            ticks: { font: { family: 'Lato' } }
+                        },
+                        x: {
+                            grid: { display: false, drawBorder: false },
+                            ticks: { font: { family: 'Lato', weight: 'bold' }, color: '#4b5563' }
+                        }
+                    },
+                    animation: {
+                        duration: 1500,
+                        easing: 'easeOutQuart'
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
