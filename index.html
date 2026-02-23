@@ -347,8 +347,8 @@
                         <p class="text-xs text-gray-500 font-bold uppercase tracking-widest mb-3">PARTNERS</p>
                         <div class="logo-box px-6 py-6 rounded-xl shadow-sm flex flex-wrap items-center justify-center gap-8 sm:gap-12 w-full min-h-[7rem]">
                             <img src="malfi-logo-bw.png" alt="Malfinis" class="max-h-20 w-auto object-contain hover:scale-105 transition-transform duration-300" title="Malfinis Film & Animation">
-                            <img src="caribbean-cinema-color-logo.png" alt="Caribbean Cinemas" class="max-h-16 w-auto object-contain hover:scale-105 transition-transform duration-300" title="Caribbean Cinemas">
-                            <img src="watchout-logo-color.png" alt="Watchout Studio" class="max-h-20 w-auto object-contain hover:scale-105 transition-transform duration-300" title="Watchout Studio">
+                            <img src="caribbean-cinema-color-logo.png" alt="Caribbean Cinemas" class="max-h-20 w-auto object-contain hover:scale-105 transition-transform duration-300" title="Caribbean Cinemas">
+                            <img src="watchout-logo-color.png" alt="Watchout Studio" class="max-h-28 w-auto object-contain hover:scale-105 transition-transform duration-300" title="Watchout Studio">
                             <img src="pnt-color-logo.png" alt="Po-Nad-To" class="max-h-20 w-auto object-contain hover:scale-105 transition-transform duration-300" title="Po-Nad-To Foundation">
                         </div>
                     </div>
@@ -447,6 +447,9 @@
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); });
         });
+
+        // Ensure agenda renders on both DOMContentLoaded and window load for GitHub Pages
+        window.addEventListener('load', () => { switchTab('day3'); });
 
         function switchTab(dayKey) {
             ['day3', 'day4', 'day5'].forEach(key => {
