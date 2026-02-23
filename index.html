@@ -30,16 +30,8 @@
             position: relative;
             width: 100%;
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto;
             height: 300px;
-            max-height: 400px;
-        }
-
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
         }
 
         .card-hover {
@@ -59,75 +51,94 @@
             from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        .agenda-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            .agenda-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .nav-logo-sizing {
+            height: auto;
+            max-height: 120px; /* Balancing visibility with navigation usability */
+            width: 305px;
+        }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Navigation -->
-    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-24 items-center">
+            <div class="flex justify-between h-32 items-center">
                 <div class="flex items-center">
-                    <!-- Updated to .png based on your screenshot -->
-                    <img src="logo_forum_op.png" alt="Forum Logo" class="h-16 sm:h-20 w-auto object-contain mix-blend-multiply drop-shadow-sm">
+                    <!-- Forum Logo - Increased to 305px as requested -->
+                    <img src="logo_forum_op.png" alt="Forum Logo" class="nav-logo-sizing object-contain mix-blend-multiply">
                 </div>
-                <div class="hidden md:flex space-x-8 text-sm font-semibold text-gray-600">
+                <div class="hidden md:flex space-x-8 text-xs font-bold text-gray-500 uppercase tracking-[0.2em]">
                     <a href="#alliance" class="hover:text-red-700 transition">The Alliance</a>
                     <a href="#delegation" class="hover:text-red-700 transition">Delegation</a>
                     <a href="#agenda" class="hover:text-red-700 transition">Agenda</a>
-                    <a href="#screening" class="hover:text-red-700 transition">Special Screening</a>
+                    <a href="#screening" class="hover:text-red-700 transition">Screening</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative bg-white pt-24 pb-32 px-4 sm:px-6 lg:px-8 border-b border-gray-100">
+    <header class="relative bg-white pt-20 pb-28 px-4 sm:px-6 lg:px-8 border-b border-gray-100">
         <div class="relative max-w-5xl mx-auto text-center fade-in">
-            <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-gray-200 bg-white text-xs font-bold text-gray-600 mb-8 shadow-sm uppercase tracking-widest">
+            <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-gray-200 bg-white text-[10px] font-black text-gray-500 mb-8 shadow-sm uppercase tracking-[0.3em]">
                 <span class="w-2 h-2 rounded-full bg-red-600 mr-2 animate-pulse"></span>
                 Official Press & Partner Hub
             </div>
             
-            <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight cinematic-font">
+            <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-8 leading-tight cinematic-font">
                 Polish Cinematic Excellence <br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-red-900 italic font-medium">Meets Caribbean Storytelling</span>
             </h1>
             
-            <p class="mt-6 max-w-2xl mx-auto text-xl md:text-2xl text-gray-600 font-light leading-relaxed">
-                A landmark creative exchange built on <strong class="font-bold text-gray-900">co-empowerment</strong> and the merging of unique storytelling traditions <span class="bg-red-100 text-red-900 px-2 py-0.5 rounded font-medium">as equals.</span>
+            <p class="mt-6 max-w-3xl mx-auto text-xl md:text-2xl text-gray-600 font-light leading-relaxed">
+                A landmark creative exchange built on <strong class="font-bold text-gray-900 underline decoration-red-600 decoration-4 underline-offset-8">co-empowerment</strong> and the merging of unique storytelling traditions <span class="bg-red-100 text-red-900 px-3 py-1 rounded-lg font-bold">as equals.</span>
             </p>
             
-            <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4 text-sm font-bold tracking-wide">
-                <div class="flex items-center justify-center space-x-3 text-gray-700 bg-stone-50 px-8 py-4 rounded-xl border border-stone-200 shadow-sm">
-                    <span class="text-xl">📅</span>
+            <div class="mt-16 flex flex-col sm:flex-row justify-center gap-6 text-sm font-bold tracking-widest">
+                <div class="flex items-center justify-center space-x-4 text-gray-800 bg-stone-50 px-10 py-5 rounded-2xl border border-stone-200 shadow-sm">
+                    <span class="text-2xl">📅</span>
                     <span>MARCH 23 – 30, 2026</span>
                 </div>
-                <div class="flex items-center justify-center space-x-3 text-gray-700 bg-stone-50 px-8 py-4 rounded-xl border border-stone-200 shadow-sm">
-                    <span class="text-xl">📍</span>
+                <div class="flex items-center justify-center space-x-4 text-gray-800 bg-stone-50 px-10 py-5 rounded-2xl border border-stone-200 shadow-sm">
+                    <span class="text-2xl">📍</span>
                     <span>CASTRIES, SAINT LUCIA</span>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Context Section -->
-    <section id="alliance" class="py-24 bg-stone-50">
+    <!-- The Alliance Section -->
+    <section id="alliance" class="py-24 bg-stone-50 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
                 <div class="lg:col-span-7 space-y-8">
-                    <div class="prose prose-lg text-gray-600 max-w-none">
-                        <h2 class="text-4xl font-bold text-gray-900 cinematic-font mb-6">A Global Alliance of Equals</h2>
-                        <p class="text-xl font-medium text-gray-800 leading-relaxed border-l-4 border-red-700 pl-6">
+                    <div class="prose prose-xl text-gray-600 max-w-none">
+                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 cinematic-font mb-8">A Global Alliance of Equals</h2>
+                        <p class="text-2xl font-medium text-gray-800 leading-relaxed border-l-8 border-red-700 pl-8 mb-8">
                             Polish cinema is experiencing an unprecedented global renaissance, winning 94 awards in 2024-2025 alone.
                         </p>
-                        <p>
-                            From International Emmy winners to Oscar-contending European co-productions, the "Polish School" of filmmaking offers a unique blueprint for technical precision and bold storytelling.
+                        <p class="text-lg leading-relaxed">
+                            Through the <strong>NetWorks</strong> program, the Adam Mickiewicz Institute positions Polish artists as vital partners in the global creative economy. This forum is not a top-down masterclass, but a professional alliance built on co-authoring new narratives and sharing technical mastery.
                         </p>
                     </div>
                 </div>
                 <div class="lg:col-span-5">
-                    <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+                    <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
+                        <h4 class="text-center font-bold text-[10px] uppercase tracking-[0.3em] text-gray-400 mb-8">Institutional Impact Data</h4>
                         <div class="chart-container">
                             <canvas id="cinemaStatsChart"></canvas>
                         </div>
@@ -140,111 +151,292 @@
     <!-- Delegation Section -->
     <section id="delegation" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 cinematic-font mb-4">The Delegation</h2>
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 cinematic-font mb-6">The Delegation</h2>
+                <div class="h-1.5 bg-red-800 w-24 mx-auto mb-6"></div>
+                <p class="text-gray-500 max-w-2xl mx-auto text-lg">Industry masters traveling to Saint Lucia to mentor, collaborate, and draft future co-productions.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Xawery Card -->
-                <div class="bg-stone-50 rounded-2xl p-8 card-hover border border-stone-100">
-                    <div class="h-16 w-16 bg-white border border-stone-200 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-sm">🎬</div>
-                    <h3 class="text-2xl font-bold text-gray-900 cinematic-font mb-1">Xawery Żuławski</h3>
-                    <div class="text-sm font-bold uppercase tracking-wider mb-4 leading-snug">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Xawery -->
+                <div class="bg-stone-50 rounded-3xl p-10 card-hover border border-stone-100 relative group">
+                    <div class="h-16 w-16 bg-white border border-stone-200 rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-sm group-hover:bg-red-800 group-hover:text-white transition-colors">🎬</div>
+                    <h3 class="text-2xl font-bold text-gray-900 cinematic-font mb-2">Xawery Żuławski</h3>
+                    <div class="text-xs font-black uppercase tracking-widest mb-6 leading-tight">
                         <span class="text-red-800">DIRECTOR &</span><br>
-                        <span class="bg-red-100 text-red-900 px-1 inline-block mt-0.5">COLLABORATIVE ARTIST</span>
+                        <span class="bg-red-100 text-red-900 px-2 py-0.5 inline-block mt-1">COLLABORATIVE ARTIST</span>
                     </div>
-                    <p class="text-sm text-gray-600 leading-relaxed">Visionary director with 40+ international recognitions, dedicated to socially conscious storytelling.</p>
+                    <p class="text-gray-600 leading-relaxed">Visionary director with 40+ international recognitions. Xawery views cinema as a powerful statement for global change and local empowerment through shared craft.</p>
                 </div>
-                <!-- Other cards remain similar... -->
+
+                <!-- Kuba -->
+                <div class="bg-stone-50 rounded-3xl p-10 card-hover border border-stone-100 group">
+                    <div class="h-16 w-16 bg-white border border-stone-200 rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-sm group-hover:bg-red-800 group-hover:text-white transition-colors">🎥</div>
+                    <h3 class="text-2xl font-bold text-gray-900 cinematic-font mb-2">Kuba Łubniewski</h3>
+                    <div class="text-xs font-black uppercase tracking-widest mb-6 leading-tight">
+                        <span class="text-red-800">CINEMATOGRAPHER &</span><br>
+                        <span class="bg-red-100 text-red-900 px-2 py-0.5 inline-block mt-1">VISUAL AESTHETE</span>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">Fryderyk Award winner with a portfolio of 40+ music videos. Kuba brings technical precision and a modern visual aesthetic to the workshop series.</p>
+                </div>
+
+                <!-- Paweł -->
+                <div class="bg-stone-50 rounded-3xl p-10 card-hover border border-stone-100 group">
+                    <div class="h-16 w-16 bg-white border border-stone-200 rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-sm group-hover:bg-red-800 group-hover:text-white transition-colors">🎞️</div>
+                    <h3 class="text-2xl font-bold text-gray-900 cinematic-font mb-2">Paweł Tarasiewicz</h3>
+                    <div class="text-xs font-black uppercase tracking-widest mb-6 leading-tight">
+                        <span class="text-red-800">PRODUCER &</span><br>
+                        <span class="bg-red-100 text-red-900 px-2 py-0.5 inline-block mt-1">INDEPENDENT VISIONARY</span>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">Key figure at Amondo Films. Paweł specializes in the intersection of production and cinematography, essential for drafting co-production frameworks.</p>
+                </div>
+
+                <!-- Joanna -->
+                <div class="bg-stone-50 rounded-3xl p-10 card-hover border border-stone-100 group">
+                    <div class="h-16 w-16 bg-white border border-stone-200 rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-sm group-hover:bg-red-800 group-hover:text-white transition-colors">📝</div>
+                    <h3 class="text-2xl font-bold text-gray-900 cinematic-font mb-2">Joanna Łopat</h3>
+                    <div class="text-xs font-black uppercase tracking-widest mb-6 leading-tight">
+                        <span class="text-red-800">DOCUMENTARIAN &</span><br>
+                        <span class="bg-red-100 text-red-900 px-2 py-0.5 inline-block mt-1">SOCIAL ADVOCATE</span>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">European Press Prize nominee. Her work focuses on giving a voice to the unheard, aligning with the Forum’s mission of co-empowerment.</p>
+                </div>
+
+                <!-- Lude -->
+                <div class="bg-stone-50 rounded-3xl p-10 card-hover border border-stone-100 group">
+                    <div class="h-16 w-16 bg-white border border-stone-200 rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-sm group-hover:bg-red-800 group-hover:text-white transition-colors">🤝</div>
+                    <h3 class="text-2xl font-bold text-gray-900 cinematic-font mb-2">Lude Reno</h3>
+                    <div class="text-xs font-black uppercase tracking-widest mb-6 leading-tight">
+                        <span class="text-red-800">COORDINATOR &</span><br>
+                        <span class="bg-red-100 text-red-900 px-2 py-0.5 inline-block mt-1">CULTURAL BRIDGE</span>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">Founder of the Po-Nad-To Foundation. Lude serves as the strategic link between the Polish cohort and the Saint Lucian creative community.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Screening Section -->
-    <section id="screening" class="py-20 bg-gray-900 text-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
-            <div class="flex-1">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 cinematic-font">BOGOWIE <span class="text-2xl text-gray-400 font-sans italic font-light">(Gods)</span></h2>
-                <p class="text-gray-300 text-lg mb-8 leading-relaxed">
-                    A gripping biopic showing the technical excellence and emotional depth of Polish cinema.
-                </p>
-                <div class="flex items-center bg-white px-4 py-2 rounded-lg inline-flex">
-                    <!-- Updated to .png based on your screenshot -->
-                    <img src="caribbean-cinema-color-logo.png" alt="Caribbean Cinemas" class="h-8 w-auto mr-3 object-contain">
-                    <span class="text-gray-900 font-bold">Castries</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer & Partners -->
-    <footer id="partners" class="bg-stone-50 border-t border-gray-200 pt-16 pb-12">
+    <!-- Detailed Agenda Section -->
+    <section id="agenda" class="py-24 bg-stone-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center border-b border-gray-200 pb-16 mb-12">
-                <h4 class="font-bold text-gray-900 cinematic-font text-3xl mb-12">The Strategic Alliance</h4>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 cinematic-font mb-6">Forum Agenda</h2>
+                <p class="text-gray-500 text-lg">A strategic sequence of skill-sharing and professional networking.</p>
+            </div>
+            
+            <div class="agenda-grid">
+                <!-- Day 3 -->
+                <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col">
+                    <div class="bg-red-800 text-white px-8 py-6 font-black tracking-[0.3em] text-xs uppercase">DAY 3 • MARCH 25</div>
+                    <div class="p-8 flex-grow">
+                        <h4 class="font-bold text-xl mb-6">SALCC Student Workshops</h4>
+                        <ul class="space-y-4">
+                            <li class="flex flex-col border-b border-stone-100 pb-3">
+                                <span class="text-[10px] font-bold text-red-700 uppercase tracking-widest">09:00</span>
+                                <span class="font-bold text-gray-900">NetWorks Mission Intro</span>
+                            </li>
+                            <li class="flex flex-col border-b border-stone-100 pb-3">
+                                <span class="text-[10px] font-bold text-red-700 uppercase tracking-widest">09:30</span>
+                                <span class="font-bold text-gray-900">Masterclass w/ Żuławski</span>
+                            </li>
+                            <li class="flex flex-col border-b border-stone-100 pb-3">
+                                <span class="text-[10px] font-bold text-red-700 uppercase tracking-widest">11:15</span>
+                                <span class="font-bold text-gray-900">Technical Breakouts</span>
+                            </li>
+                            <li class="flex flex-col">
+                                <span class="text-[10px] font-bold text-red-700 uppercase tracking-widest">15:30</span>
+                                <span class="font-bold text-gray-900">Portfolio Reviews</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Day 4 -->
+                <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col">
+                    <div class="bg-gray-900 text-white px-8 py-6 font-black tracking-[0.3em] text-xs uppercase">DAY 4 • MARCH 26</div>
+                    <div class="p-8 flex-grow">
+                        <h4 class="font-bold text-xl mb-6">Professional Media Day</h4>
+                        <ul class="space-y-4">
+                            <li class="flex flex-col border-b border-stone-100 pb-3">
+                                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">10:00</span>
+                                <span class="font-bold text-gray-900">Professional Meeting #1</span>
+                            </li>
+                            <li class="flex flex-col border-b border-stone-100 pb-3">
+                                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">14:00</span>
+                                <span class="font-bold text-gray-900">Official Press Conference</span>
+                            </li>
+                            <li class="flex flex-col">
+                                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">18:00</span>
+                                <span class="font-bold text-gray-900">Gala Screening: BOGOWIE</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Day 5 -->
+                <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col">
+                    <div class="bg-stone-200 text-gray-800 px-8 py-6 font-black tracking-[0.3em] text-xs uppercase">DAY 5 • MARCH 27</div>
+                    <div class="p-8 flex-grow">
+                        <h4 class="font-bold text-xl mb-6">Co-Production Drafting</h4>
+                        <ul class="space-y-4">
+                            <li class="flex flex-col border-b border-stone-100 pb-3">
+                                <span class="text-[10px] font-bold text-stone-500 uppercase tracking-widest">10:00</span>
+                                <span class="font-bold text-gray-900">Networking Circle</span>
+                            </li>
+                            <li class="flex flex-col border-b border-stone-100 pb-3">
+                                <span class="text-[10px] font-bold text-stone-500 uppercase tracking-widest">11:30</span>
+                                <span class="font-bold text-gray-900">Legal Framework Workshop</span>
+                            </li>
+                            <li class="flex flex-col">
+                                <span class="text-[10px] font-bold text-stone-500 uppercase tracking-widest">14:00</span>
+                                <span class="font-bold text-gray-900">Common Project Draft</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Screening Section -->
+    <section id="screening" class="py-24 bg-gray-900 text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="flex-1 space-y-8">
+                    <div class="inline-block px-4 py-2 bg-red-800 text-[10px] font-black tracking-[0.4em] uppercase rounded-lg">Feature Presentation</div>
+                    <h2 class="text-5xl md:text-7xl font-bold mb-6 cinematic-font">BOGOWIE <span class="text-3xl text-gray-500 font-sans italic font-light ml-4">(Gods)</span></h2>
+                    <p class="text-gray-400 text-xl leading-relaxed max-w-2xl">
+                        This high-octane biopic tells the true story of Zbigniew Religa, the surgeon who performed Poland's first successful heart transplant. It perfectly illustrates the technical excellence and emotional depth of the "Polish School."
+                    </p>
+                    <div class="flex items-center bg-white/5 border border-white/10 px-8 py-6 rounded-3xl backdrop-blur-sm shadow-2xl inline-flex group hover:bg-white transition-all duration-300">
+                        <img src="caribbean-cinema-color-logo.png" alt="Caribbean Cinemas" class="h-10 w-auto mr-6 object-contain group-hover:scale-110 transition-transform">
+                        <div class="text-left">
+                            <div class="text-[10px] font-bold uppercase text-gray-500 tracking-widest group-hover:text-red-700 transition-colors">Screening Venue</div>
+                            <div class="text-xl font-bold text-white group-hover:text-gray-900 transition-colors">Castries, Saint Lucia</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 w-full hidden lg:block">
+                    <div class="aspect-video bg-gray-800 rounded-3xl border border-white/10 flex items-center justify-center relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
+                        <span class="relative text-gray-500 italic font-light tracking-widest">CINEMATIC STILL PLACEHOLDER</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Common Project Bridge -->
+    <section class="py-32 bg-white relative">
+        <div class="max-w-4xl mx-auto px-4 text-center space-y-10 relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 cinematic-font uppercase tracking-tight">The Common Project</h2>
+            <p class="text-2xl text-gray-500 font-light leading-relaxed italic">
+                Beyond the Forum, Polish and Saint Lucian teams are co-authoring a professional roadmap for future films. This is the seed of a long-term strategic alliance between the EU and the Caribbean.
+            </p>
+            <div class="h-2 bg-red-800 w-32 mx-auto rounded-full"></div>
+        </div>
+    </section>
+
+    <!-- Strategic Alliance (Footer) -->
+    <footer id="partners" class="bg-stone-50 border-t border-gray-200 pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center border-b border-gray-200 pb-20 mb-16">
+                <h4 class="font-bold text-gray-900 cinematic-font text-3xl mb-16 uppercase tracking-tight">The Strategic Alliance</h4>
                 
-                <div class="flex flex-col items-center space-y-10">
-                    <div class="w-full flex justify-center mb-4">
-                        <img src="logo_forum_op.png" alt="Forum Logo" class="h-32 sm:h-44 w-auto object-contain mix-blend-multiply">
+                <div class="flex flex-col items-center space-y-16">
+                    <!-- Alliance Anchor - Set to 20% width on desktop -->
+                    <div class="w-full md:w-[20%] flex justify-center mb-8">
+                        <img src="logo_forum_op.png" alt="Forum Logo" class="w-full h-auto object-contain mix-blend-multiply drop-shadow-md hover:scale-110 transition-transform duration-500">
                     </div>
 
-                    <div class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-12">
                         <!-- Organisers -->
                         <div class="flex flex-col items-center">
-                            <p class="text-xs text-gray-500 font-bold uppercase tracking-widest mb-3">ORGANISERS</p>
-                            <div class="bg-white px-6 py-6 rounded-xl shadow-sm border border-gray-200 flex items-center justify-center gap-6 w-full h-24">
-                                <img src="avfa_logo.png" alt="AVFA" class="max-h-16 w-auto object-contain mix-blend-multiply">
-                                <img src="salcc-logo-op.png" alt="SALCC" class="max-h-14 w-auto object-contain mix-blend-multiply">
+                            <p class="text-[10px] text-gray-400 font-black uppercase tracking-[0.4em] mb-6">ORGANISERS</p>
+                            <div class="bg-white px-10 py-10 rounded-[2.5rem] shadow-sm border border-gray-200 flex items-center justify-center gap-12 w-full h-40">
+                                <img src="avfa_logo.png" alt="AVFA" class="max-h-20 w-auto object-contain mix-blend-multiply transition-all hover:scale-105">
+                                <img src="salcc-logo-op.png" alt="SALCC" class="max-h-16 w-auto object-contain mix-blend-multiply transition-all hover:scale-105">
                             </div>
                         </div>
 
                         <!-- Financial Partners -->
                         <div class="flex flex-col items-center">
-                            <p class="text-xs text-gray-500 font-bold uppercase tracking-widest mb-3">FINANCIAL PARTNERS</p>
-                            <div class="bg-white px-6 py-6 rounded-xl shadow-sm border border-gray-200 flex items-center justify-center gap-6 w-full h-24">
-                                <img src="iam-logo-color.png" alt="IAM" class="max-h-12 w-auto object-contain mix-blend-multiply">
-                                <img src="minister-kultura-logo.png" alt="Ministry" class="max-h-12 w-auto object-contain mix-blend-multiply">
+                            <p class="text-[10px] text-gray-400 font-black uppercase tracking-[0.4em] mb-6">FINANCIAL PARTNERS</p>
+                            <div class="bg-white px-10 py-10 rounded-[2.5rem] shadow-sm border border-gray-200 flex items-center justify-center gap-12 w-full h-40">
+                                <img src="iam-logo-color.png" alt="IAM" class="max-h-16 w-auto object-contain mix-blend-multiply transition-all hover:scale-105">
+                                <img src="minister-kultura-logo.png" alt="Ministry" class="max-h-14 w-auto object-contain mix-blend-multiply transition-all hover:scale-105">
                             </div>
                         </div>
                     </div>
 
                     <!-- Partners -->
-                    <div class="w-full max-w-5xl flex flex-col items-center pt-2">
-                        <p class="text-xs text-gray-500 font-bold uppercase tracking-widest mb-3">PARTNERS</p>
-                        <div class="bg-white px-6 py-6 rounded-xl shadow-sm border border-gray-200 flex flex-wrap items-center justify-center gap-8 w-full">
-                            <img src="pnt-color-logo.png" alt="PNT" class="max-h-12 w-auto object-contain mix-blend-multiply">
-                            <img src="malfi-logo-bw.png" alt="Malfini" class="max-h-14 w-auto object-contain mix-blend-multiply">
-                            <img src="caribbean-cinema-color-logo.png" alt="Cinema" class="max-h-10 w-auto object-contain mix-blend-multiply">
-                            <img src="watchout-logo-color.png" alt="Watchout" class="max-h-12 w-auto object-contain mix-blend-multiply">
+                    <div class="w-full max-w-6xl flex flex-col items-center pt-8">
+                        <p class="text-[10px] text-gray-400 font-black uppercase tracking-[0.4em] mb-6">ALLIANCE PARTNERS</p>
+                        <div class="bg-white px-12 py-10 rounded-[2.5rem] shadow-sm border border-gray-200 flex flex-wrap items-center justify-center gap-12 sm:gap-20 w-full min-h-[8rem]">
+                            <img src="pnt-color-logo.png" alt="PNT" class="max-h-16 w-auto object-contain mix-blend-multiply hover:grayscale-0 transition-all">
+                            <img src="malfi-logo-bw.png" alt="Malfini" class="max-h-16 w-auto object-contain mix-blend-multiply hover:grayscale-0 transition-all">
+                            <img src="caribbean-cinema-color-logo.png" alt="Cinema" class="max-h-12 w-auto object-contain mix-blend-multiply hover:grayscale-0 transition-all">
+                            <img src="watchout-logo-color.png" alt="Watchout" class="max-h-16 w-auto object-contain mix-blend-multiply hover:grayscale-0 transition-all">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="border-t border-gray-200 pt-8 text-center mt-12">
-                <p class="text-xs text-gray-600">The project is co-financed by the Minister of Culture and National Heritage as part of the NetWorks program of the Adam Mickiewicz Institute.</p>
-                <p class="mt-6 text-xs text-gray-400">© 2026 Poland-Saint Lucia Film Partnership Forum.</p>
+            <!-- Co-financing and Compliance -->
+            <div class="pt-12 text-center mt-12">
+                <p class="text-[10px] text-gray-400 font-medium uppercase tracking-[0.2em] leading-loose max-w-2xl mx-auto px-4">
+                    The project is co-financed by the Minister of Culture and National Heritage as part of the NetWorks program of the Adam Mickiewicz Institute.
+                </p>
+                <div class="mt-12 flex flex-wrap justify-center gap-8">
+                    <span class="text-[10px] font-black text-stone-300 uppercase tracking-widest">#NetWorks</span>
+                    <span class="text-[10px] font-black text-stone-300 uppercase tracking-widest">#InstytutAdamaMickiewicza</span>
+                    <span class="text-[10px] font-black text-stone-300 uppercase tracking-widest">#KulturaPolska</span>
+                </div>
+                <p class="mt-16 text-[10px] text-stone-300 font-bold uppercase tracking-widest">© 2026 Poland-Saint Lucia Film Partnership Forum.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Chart Logic -->
     <script>
-        const ctx = document.getElementById('cinemaStatsChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Festivals', 'Awards'],
-                datasets: [{
-                    data: [280, 94],
-                    backgroundColor: ['rgba(185, 28, 28, 0.8)', 'rgba(234, 179, 8, 0.8)'],
-                    borderRadius: 6
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } }
-            }
-        });
+        window.onload = function() {
+            const ctx = document.getElementById('cinemaStatsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['FESTIVALS', 'AWARDS'],
+                    datasets: [{
+                        data: [280, 94],
+                        backgroundColor: ['#991b1b', '#ca8a04'],
+                        borderRadius: 12,
+                        barThickness: 50
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { 
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#111827',
+                            padding: 15,
+                            titleFont: { family: 'Lato', size: 12, weight: 'bold' },
+                            bodyFont: { family: 'Lato', size: 12 }
+                        }
+                    },
+                    scales: {
+                        y: { 
+                            beginAtZero: true, 
+                            grid: { color: '#f3f4f6', drawBorder: false },
+                            ticks: { font: { size: 10, weight: 'bold' }, color: '#9ca3af' }
+                        },
+                        x: { 
+                            grid: { display: false },
+                            ticks: { font: { size: 10, weight: 'bold' }, color: '#4b5563' }
+                        }
+                    }
+                }
+            });
+        };
     </script>
 </body>
 </html>
